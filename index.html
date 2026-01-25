@@ -863,9 +863,56 @@
         <p>Documentando minha jornada de imigração com transparência total</p>
         <p style="margin-top: 20px;">Entre em contato: <a href="mailto:carvalhoerick.ec@gmail.com">carvalhoerick.ec@gmail.com</a></p>
         <a href="https://wa.me/5582987516948" target="_blank">
-    <img src="icone-whatsapp.png" alt="Chat WhatsApp" style="width:50px; height:50px;">
-</a>
         <p style="margin-top: 40px; opacity: 0.7;">© 2026 Erick Carvalho - Todos os direitos reservados</p>
+        <!-- Botão WhatsApp Flutuante -->
+<a href="https://wa.me/5582987516948?text=Olá!%20Vim%20pelo%20site%20Erick%20Rumo%20a%20Dublin" 
+   class="whatsapp-float" 
+   target="_blank"
+   title="Fale comigo no WhatsApp">
+    <svg width="40" height="40" viewBox="0 0 32 32" fill="white">
+        <path d="M16 0C7.164 0 0 7.164 0 16c0 2.832.744 5.488 2.04 7.792L0 32l8.416-2.208A15.924 15.924 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.2c-2.576 0-5.008-.744-7.04-2.016l-.504-.296-5.232 1.376 1.4-5.12-.328-.528A13.152 13.152 0 012.8 16C2.8 8.712 8.712 2.8 16 2.8S29.2 8.712 29.2 16 23.288 29.2 16 29.2zm7.2-9.84c-.392-.2-2.336-1.152-2.696-1.28-.36-.136-.624-.2-.888.2-.264.392-1.024 1.28-1.256 1.544-.232.272-.464.304-.856.104-.392-.2-1.656-.608-3.152-1.944-1.168-1.04-1.952-2.328-2.184-2.72-.232-.392-.024-.608.176-.8.176-.176.392-.464.592-.696.2-.232.264-.392.4-.656.136-.264.072-.496-.032-.696-.104-.2-.888-2.136-1.216-2.928-.32-.768-.648-.664-.888-.672-.232-.008-.496-.008-.76-.008s-.696.096-1.056.488c-.36.392-1.384 1.352-1.384 3.296s1.416 3.824 1.616 4.088c.2.264 2.8 4.272 6.784 5.992.952.416 1.696.664 2.272.848.952.304 1.816.264 2.504.16.76-.112 2.336-.952 2.664-1.872.328-.92.328-1.712.232-1.872-.096-.168-.36-.264-.752-.464z"/>
+    </svg>
+</a>
+
+<style>
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+</style>
+
     </footer>
 
 </body>
