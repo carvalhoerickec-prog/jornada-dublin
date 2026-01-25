@@ -1,95 +1,171 @@
-<script>
-// ===== CONFIGURAÇÕES (VOCÊ SÓ MEXE AQUI) =====
-const config = {
-    // Valores fixos
-    metaTotal: 60000,           // Meta total em reais
-    valorArrecadado: 4000,      // Valor já arrecadado
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erick Rumo a Dublin - Jornada de Imigração</title>
+    <style>
+        /* TODO O SEU CSS PERMANECE IGUAL */
+        /* (Não vou repetir aqui pra economizar espaço) */
+    </style>
+</head>
+<body>
+    <!-- TODO O SEU HTML PERMANECE IGUAL -->
+    <!-- (Não vou repetir aqui pra economizar espaço) -->
 
-    // Datas
-    dataAlvo: new Date('2026-12-15'),  // Data prevista pra Dublin
-    dataInicioIngles: new Date('2026-01-15'), // Quando começou inglês
-};
+    <!-- Footer -->
+    <footer>
+        <h3 style="margin-bottom: 15px;">🇧🇷 ➜ 🇮🇪 Erick Rumo a Dublin</h3>
+        <p>Documentando minha jornada de imigração com transparência total</p>
+        <p style="margin-top: 20px;">Entre em contato: <a href="mailto:carvalhoerick.ec@gmail.com">carvalhoerick.ec@gmail.com</a></p>
+        <p style="margin-top: 40px; opacity: 0.7;">© 2026 Erick Carvalho - Todos os direitos reservados</p>
+    </footer>
 
-// ===== FUNÇÕES DE CÁLCULO =====
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5582987516948?text=Olá!%20Vim%20pelo%20site%20Erick%20Rumo%20a%20Dublin" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Fale comigo no WhatsApp">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="white">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.832.744 5.488 2.04 7.792L0 32l8.416-2.208A15.924 15.924 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.2c-2.576 0-5.008-.744-7.04-2.016l-.504-.296-5.232 1.376 1.4-5.12-.328-.528A13.152 13.152 0 012.8 16C2.8 8.712 8.712 2.8 16 2.8S29.2 8.712 29.2 16 23.288 29.2 16 29.2zm7.2-9.84c-.392-.2-2.336-1.152-2.696-1.28-.36-.136-.624-.2-.888.2-.264.392-1.024 1.28-1.256 1.544-.232.272-.464.304-.856.104-.392-.2-1.656-.608-3.152-1.944-1.168-1.04-1.952-2.328-2.184-2.72-.232-.392-.024-.608.176-.8.176-.176.392-.464.592-.696.2-.232.264-.392.4-.656.136-.264.072-.496-.032-.696-.104-.2-.888-2.136-1.216-2.928-.32-.768-.648-.664-.888-.672-.232-.008-.496-.008-.76-.008s-.696.096-1.056.488c-.36.392-1.384 1.352-1.384 3.296s1.416 3.824 1.616 4.088c.2.264 2.8 4.272 6.784 5.992.952.416 1.696.664 2.272.848.952.304 1.816.264 2.504.16.76-.112 2.336-.952 2.664-1.872.328-.92.328-1.712.232-1.872-.096-.168-.36-.264-.752-.464z"/>
+        </svg>
+    </a>
 
-// Calcular valor restante
-function calcularRestante() {
-    return config.metaTotal - config.valorArrecadado;
-}
-
-// Calcular percentual
-function calcularPercentual() {
-    return ((config.valorArrecadado / config.metaTotal) * 100).toFixed(2);
-}
-
-// Calcular dias até Dublin
-function calcularDiasAte(dataFinal) {
-    const hoje = new Date();
-    const diferenca = dataFinal - hoje;
-    const dias = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
-    return dias > 0 ? dias : 0;
-}
-
-// Calcular dias desde uma data
-function calcularDiasDesde(dataInicial) {
-    const hoje = new Date();
-    const diferenca = hoje - dataInicial;
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    return dias > 0 ? dias : 0;
-}
-
-// Formatar valor em reais
-function formatarReais(valor) {
-    return valor.toLocaleString('pt-BR', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
-
-// ===== ATUALIZAR PÁGINA =====
-function atualizarTudo() {
-    const restante = calcularRestante();
-    const percentual = calcularPercentual();
-    const diasDublin = calcularDiasAte(config.dataAlvo);
-    const diasIngles = calcularDiasDesde(config.dataInicioIngles);
-
-    // Atualizar barra de progresso
-    const barraProgresso = document.querySelector('.progress-bar');
-    if (barraProgresso) {
-        barraProgresso.style.width = percentual + '%';
-        barraProgresso.textContent = percentual + '%';
+    <style>
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
     }
 
-    // Atualizar valores no hero
-    const progressDetails = document.querySelectorAll('.progress-detail-value');
-    if (progressDetails.length >= 3) {
-        progressDetails[0].textContent = 'R$ ' + formatarReais(config.valorArrecadado);
-        progressDetails[1].textContent = 'R$ ' + formatarReais(config.metaTotal);
-        progressDetails[2].textContent = 'R$ ' + formatarReais(restante);
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
     }
 
-    // Atualizar dias até Dublin
-    const elemDiasDublin = document.querySelector('.stat-number.dias-dublin');
-    if (elemDiasDublin) {
-        elemDiasDublin.textContent = diasDublin;
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            width: 50px;
+            height: 50px;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    </style>
+
+    <!-- JAVASCRIPT ATUALIZADO -->
+    <script>
+    // ===== CONFIGURAÇÕES (VOCÊ SÓ MEXE AQUI) =====
+    const config = {
+        // Valores fixos
+        metaTotal: 60000,           // Meta total em reais
+        valorArrecadado: 4000,      // Valor já arrecadado
+
+        // Datas
+        dataAlvo: new Date('2026-12-15'),  // Data prevista pra Dublin
+        dataInicioIngles: new Date('2026-01-15'), // Quando começou inglês
+    };
+
+    // ===== FUNÇÕES DE CÁLCULO =====
+
+    // Calcular valor restante
+    function calcularRestante() {
+        return config.metaTotal - config.valorArrecadado;
     }
 
-    // Atualizar dias estudando inglês (se você tiver esse elemento)
-    const elemDiasIngles = document.querySelector('.stat-number.dias-ingles');
-    if (elemDiasIngles) {
-        elemDiasIngles.textContent = diasIngles;
+    // Calcular percentual
+    function calcularPercentual() {
+        return ((config.valorArrecadado / config.metaTotal) * 100).toFixed(2);
     }
 
-    // Atualizar percentual na timeline "Em Andamento"
-    const timelineProgress = document.querySelector('.timeline-status.in-progress');
-    if (timelineProgress) {
-        timelineProgress.textContent = `⏳ Em Andamento (${percentual}%)`;
+    // Calcular dias até Dublin
+    function calcularDiasAte(dataFinal) {
+        const hoje = new Date();
+        const diferenca = dataFinal - hoje;
+        const dias = Math.ceil(diferenca / (1000 * 60 * 60 * 24));
+        return dias > 0 ? dias : 0;
     }
-}
 
-// ===== EXECUTAR =====
-document.addEventListener('DOMContentLoaded', atualizarTudo);
+    // Calcular dias desde uma data
+    function calcularDiasDesde(dataInicial) {
+        const hoje = new Date();
+        const diferenca = hoje - dataInicial;
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        return dias > 0 ? dias : 0;
+    }
 
-// Atualizar a cada 1 hora
-setInterval(atualizarTudo, 3600000);
-</script>
+    // Formatar valor em reais
+    function formatarReais(valor) {
+        return valor.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    // ===== ATUALIZAR PÁGINA =====
+    function atualizarTudo() {
+        const restante = calcularRestante();
+        const percentual = calcularPercentual();
+        const diasDublin = calcularDiasAte(config.dataAlvo);
+        const diasIngles = calcularDiasDesde(config.dataInicioIngles);
+
+        // Atualizar barra de progresso
+        const barraProgresso = document.querySelector('.progress-bar');
+        if (barraProgresso) {
+            barraProgresso.style.width = percentual + '%';
+            barraProgresso.textContent = percentual + '%';
+        }
+
+        // Atualizar valores no hero
+        const progressDetails = document.querySelectorAll('.progress-detail-value');
+        if (progressDetails.length >= 3) {
+            progressDetails[0].textContent = 'R$ ' + formatarReais(config.valorArrecadado);
+            progressDetails[1].textContent = 'R$ ' + formatarReais(config.metaTotal);
+            progressDetails[2].textContent = 'R$ ' + formatarReais(restante);
+        }
+
+        // Atualizar dias até Dublin
+        const elemDiasDublin = document.querySelector('.stat-number.dias-dublin');
+        if (elemDiasDublin) {
+            elemDiasDublin.textContent = diasDublin;
+        }
+
+        // Atualizar dias estudando inglês
+        const elemDiasIngles = document.querySelector('.stat-number.dias-ingles');
+        if (elemDiasIngles) {
+            elemDiasIngles.textContent = diasIngles;
+        }
+
+        // Atualizar percentual na timeline "Em Andamento"
+        const timelineProgress = document.querySelector('.timeline-status.in-progress');
+        if (timelineProgress) {
+            timelineProgress.textContent = `⏳ Em Andamento (${percentual}%)`;
+        }
+    }
+
+    // ===== EXECUTAR =====
+    document.addEventListener('DOMContentLoaded', atualizarTudo);
+
+    // Atualizar a cada 1 hora
+    setInterval(atualizarTudo, 3600000);
+    </script>
+
+</body>
+</html>
