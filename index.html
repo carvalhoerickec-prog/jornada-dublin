@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Açaí Dublin - Do Brasil pra Irlanda</title>
+    <title>Weslley Rumo a Dublin - Jornada de Imigração</title>
     <style>
         * {
             margin: 0;
@@ -15,6 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background: #f5f5f5;
         }
 
         /* Hero Section */
@@ -23,46 +24,102 @@
             color: white;
             padding: 80px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🇧🇷';
+            position: absolute;
+            font-size: 15em;
+            opacity: 0.1;
+            left: -50px;
+            top: -50px;
+        }
+
+        .hero::after {
+            content: '🇮🇪';
+            position: absolute;
+            font-size: 15em;
+            opacity: 0.1;
+            right: -50px;
+            bottom: -50px;
         }
 
         .hero h1 {
             font-size: 3em;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
         }
 
-        .hero p {
-            font-size: 1.3em;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 10px;
             opacity: 0.95;
         }
 
-        /* Progress Bar */
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 1;
+        }
+
         .progress-container {
-            max-width: 600px;
-            margin: 30px auto;
             background: rgba(255,255,255,0.2);
             border-radius: 25px;
             padding: 10px;
+            margin-bottom: 20px;
         }
 
         .progress-bar {
-            background: #FFD700;
-            height: 30px;
-            border-radius: 15px;
-            width: 0%; /* Atualize conforme progresso */
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+            height: 40px;
+            border-radius: 20px;
+            width: 35%; /* Atualize conforme progresso */
             transition: width 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: #333;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
         }
 
-        .progress-text {
-            margin-top: 15px;
-            font-size: 1.1em;
+        .progress-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .progress-detail {
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .progress-detail-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .progress-detail-label {
+            font-size: 0.95em;
+            opacity: 0.9;
         }
 
         /* Container Geral */
@@ -75,8 +132,151 @@
         .section-title {
             text-align: center;
             font-size: 2.5em;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
             color: #169B62;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Dashboard Financeiro */
+        .financial-dashboard {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .finance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .finance-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #169B62;
+            transition: transform 0.3s ease;
+        }
+
+        .finance-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .finance-card.income {
+            border-left-color: #28a745;
+        }
+
+        .finance-card.expense {
+            border-left-color: #dc3545;
+        }
+
+        .finance-card.goal {
+            border-left-color: #FFD700;
+        }
+
+        .finance-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .finance-label {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .finance-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #169B62;
+        }
+
+        /* Fontes de Renda */
+        .income-sources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .income-source {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .income-source-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .income-source-name {
+            font-weight: bold;
+            color: #169B62;
+            margin-bottom: 8px;
+        }
+
+        .income-source-value {
+            font-size: 1.5em;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .income-source-period {
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        /* Investimentos/Gastos */
+        .expenses-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .expense-info {
+            flex: 1;
+        }
+
+        .expense-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .expense-description {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .expense-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #dc3545;
         }
 
         /* Timeline */
@@ -92,7 +292,7 @@
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: #169B62;
+            background: linear-gradient(180deg, #169B62 0%, #6B46C1 100%);
         }
 
         .timeline-item {
@@ -117,167 +317,220 @@
             content: '';
             position: absolute;
             top: 0;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: #FFD700;
             border-radius: 50%;
-            border: 4px solid #169B62;
+            border: 5px solid #169B62;
+            box-shadow: 0 0 0 4px rgba(22, 155, 98, 0.2);
         }
 
         .timeline-item:nth-child(odd)::before {
-            right: -10px;
+            right: -12px;
         }
 
         .timeline-item:nth-child(even)::before {
-            left: -10px;
+            left: -12px;
+        }
+
+        .timeline-item.completed::before {
+            background: #28a745;
         }
 
         .timeline-content {
-            background: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .timeline-content h3 {
             color: #169B62;
             margin-bottom: 10px;
+            font-size: 1.3em;
         }
 
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        .timeline-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
+        .timeline-status.completed {
+            background: #d4edda;
+            color: #155724;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .timeline-status.in-progress {
+            background: #fff3cd;
+            color: #856404;
         }
 
-        .card-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: #169B62;
-            margin-bottom: 15px;
+        .timeline-status.pending {
+            background: #f8d7da;
+            color: #721c24;
         }
 
         /* Stats */
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
             margin: 40px 0;
         }
 
         .stat-box {
             background: linear-gradient(135deg, #169B62 0%, #6B46C1 100%);
             color: white;
-            padding: 30px;
+            padding: 35px 25px;
             border-radius: 15px;
             text-align: center;
+            box-shadow: 0 8px 20px rgba(22, 155, 98, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
         }
 
         .stat-number {
-            font-size: 3em;
+            font-size: 2.8em;
             font-weight: bold;
             margin-bottom: 10px;
         }
 
         .stat-label {
-            font-size: 1.1em;
-            opacity: 0.9;
+            font-size: 1.05em;
+            opacity: 0.95;
         }
 
-        /* Mural dos Apoiadores */
-        .supporters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .supporter-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
+        /* Social Integration */
+        .social-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
-            border: 2px solid #169B62;
+            margin-bottom: 40px;
         }
 
-        .supporter-name {
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #169B62 0%, #6B46C1 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
             font-weight: bold;
-            color: #169B62;
-            margin-bottom: 5px;
+            transition: transform 0.3s ease;
         }
 
-        .supporter-date {
-            font-size: 0.9em;
-            color: #666;
+        .social-link:hover {
+            transform: scale(1.05);
+        }
+
+        .social-icon {
+            font-size: 1.5em;
         }
 
         /* Blog/Updates */
         .blog-post {
             background: white;
-            padding: 30px;
+            padding: 35px;
             margin-bottom: 30px;
             border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .blog-post h3 {
             color: #169B62;
             margin-bottom: 10px;
+            font-size: 1.5em;
         }
 
-        .blog-date {
-            color: #999;
-            font-size: 0.9em;
+        .blog-meta {
+            display: flex;
+            gap: 20px;
             margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e9ecef;
+            border-radius: 15px;
+            font-size: 0.85em;
+            color: #666;
+            margin-right: 8px;
         }
 
         /* CTA Button */
         .cta-button {
             display: inline-block;
-            background: #FFD700;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #333;
-            padding: 15px 40px;
+            padding: 18px 45px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2em;
-            transition: transform 0.3s ease;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
         }
 
         /* Footer */
         footer {
-            background: #333;
+            background: #2c3e50;
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Responsivo */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .progress-details {
+                grid-template-columns: 1fr;
             }
 
             .timeline::before {
@@ -295,6 +548,15 @@
             .timeline-item::before {
                 left: 10px !important;
             }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .finance-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -302,156 +564,306 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>BR ➜ IE Açaí Dublin</h1>
-        <p>Cada garrafa de açaí me aproxima do meu sonho: estudar inglês em Dublin e conquistar residência permanente na Irlanda. Você não está só comprando açaí — está fazendo parte da minha história.</p>
+        <h1>🇧🇷 ➜ 🇮🇪</h1>
+        <div class="subtitle">Weslley Rumo a Dublin</div>
+        <p>Documentando minha jornada completa de imigração: trabalho, projetos paralelos, economia e preparação para estudar inglês em Dublin e conquistar residência permanente na Irlanda.</p>
 
-        <div class="progress-container">
-            <div class="progress-bar">00%</div>
-        </div>
-        <div class="progress-text">
-            <strong>R$ 0</strong> de <strong>R$ 60.000</strong> arrecadados
+        <div class="progress-section">
+            <div class="progress-container">
+                <div class="progress-bar">35%</div>
+            </div>
+
+            <div class="progress-details">
+                <div class="progress-detail">
+                    <div class="progress-detail-value">R$ 3.500</div>
+                    <div class="progress-detail-label">Arrecadado</div>
+                </div>
+                <div class="progress-detail">
+                    <div class="progress-detail-value">R$ 10.000</div>
+                    <div class="progress-detail-label">Meta Total</div>
+                </div>
+                <div class="progress-detail">
+                    <div class="progress-detail-value">R$ 6.500</div>
+                    <div class="progress-detail-label">Faltam</div>
+                </div>
+            </div>
         </div>
 
-        <a href="#como-apoiar" class="cta-button">Quero Apoiar! 🍓</a>
+        <a href="#apoiar" class="cta-button">Quero Apoiar! 🚀</a>
     </section>
 
-    <!-- A Jornada -->
+    <!-- Dashboard Financeiro -->
     <section class="container">
-        <h2 class="section-title">A Jornada</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>📍 Hoje</h3>
-                    <p>Vendendo açaí, estudando inglês e planejando cada detalhe da mudança.</p>
+        <h2 class="section-title">Dashboard Financeiro</h2>
+        <p class="section-subtitle">Transparência total sobre como estou juntando dinheiro</p>
+
+        <div class="financial-dashboard">
+            <div class="finance-grid">
+                <div class="finance-card income">
+                    <div class="finance-icon">💰</div>
+                    <div class="finance-label">Renda Total (mês)</div>
+                    <div class="finance-value">R$ 4.200</div>
+                </div>
+
+                <div class="finance-card expense">
+                    <div class="finance-icon">💸</div>
+                    <div class="finance-label">Gastos (mês)</div>
+                    <div class="finance-value">R$ 2.800</div>
+                </div>
+
+                <div class="finance-card goal">
+                    <div class="finance-icon">🎯</div>
+                    <div class="finance-label">Economia (mês)</div>
+                    <div class="finance-value">R$ 1.400</div>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>🎯 3 meses</h3>
-                    <p>Meta: R$ 10.000 arrecadados para passagem e primeiros meses.</p>
+
+            <h3 style="margin-bottom: 20px; color: #169B62;">Fontes de Renda</h3>
+            <div class="income-sources">
+                <div class="income-source">
+                    <div class="income-source-icon">💼</div>
+                    <div class="income-source-name">Trabalho Contrato</div>
+                    <div class="income-source-value">R$ 3.200</div>
+                    <div class="income-source-period">por mês</div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>📚 6 meses</h3>
-                    <p>Inscrição em curso de inglês em Dublin e solicitação de visto de estudante.</p>
+
+                <div class="income-source">
+                    <div class="income-source-icon">🍓</div>
+                    <div class="income-source-name">Açaí Dublin</div>
+                    <div class="income-source-value">R$ 600</div>
+                    <div class="income-source-period">por mês</div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>✈️ 9 meses</h3>
-                    <p>Embarque para Dublin! Início de uma nova vida.</p>
+
+                <div class="income-source">
+                    <div class="income-source-icon">💻</div>
+                    <div class="income-source-name">Freelas</div>
+                    <div class="income-source-value">R$ 300</div>
+                    <div class="income-source-period">por mês</div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>🏡 12 meses</h3>
-                    <p>Estudando inglês, trabalhando e iniciando processo de residência permanente.</p>
+
+                <div class="income-source">
+                    <div class="income-source-icon">📱</div>
+                    <div class="income-source-name">TikTok</div>
+                    <div class="income-source-value">R$ 100</div>
+                    <div class="income-source-period">por mês</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Como Funciona -->
-    <section class="container" id="como-apoiar" style="background: #f9f9f9; padding: 60px 20px;">
-        <h2 class="section-title">Como Funciona?</h2>
-        <div class="cards">
-            <div class="card">
-                <div class="card-icon">🍓</div>
-                <h3>Compre Açaí</h3>
-                <p>Cada garrafa custa R$ 15 e é feita com muito carinho e qualidade.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎁</div>
-                <h3>Ganhe Raspadinha</h3>
-                <p>Toda compra vem com uma raspadinha que pode te dar descontos, brindes e surpresas!</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌍</div>
-                <h3>Faça Parte</h3>
-                <p>Seu nome vai pro Mural dos Apoiadores e você acompanha meu progresso em tempo real.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Progresso Atual -->
+    <!-- Investimentos/Gastos -->
     <section class="container">
-        <h2 class="section-title">Progresso Atual</h2>
+        <h2 class="section-title">Onde o Dinheiro Está Indo</h2>
+        <p class="section-subtitle">Investimentos necessários para a jornada</p>
+
+        <div class="expenses-section">
+            <div class="expense-item">
+                <div class="expense-info">
+                    <div class="expense-name">📚 Curso de Inglês Online</div>
+                    <div class="expense-description">Preparação antes de ir para Dublin</div>
+                </div>
+                <div class="expense-value">R$ 150/mês</div>
+            </div>
+
+            <div class="expense-item">
+                <div class="expense-info">
+                    <div class="expense-name">✈️ Passagem Aérea</div>
+                    <div class="expense-description">Brasil → Dublin (reserva estimada)</div>
+                </div>
+                <div class="expense-value">R$ 4.000</div>
+            </div>
+
+            <div class="expense-item">
+                <div class="expense-info">
+                    <div class="expense-name">🏫 Matrícula Curso Dublin</div>
+                    <div class="expense-description">Curso de inglês + visto de estudante</div>
+                </div>
+                <div class="expense-value">R$ 3.500</div>
+            </div>
+
+            <div class="expense-item">
+                <div class="expense-info">
+                    <div class="expense-name">🏠 Primeiros 2 Meses</div>
+                    <div class="expense-description">Acomodação + alimentação inicial</div>
+                </div>
+                <div class="expense-value">R$ 2.500</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="container" style="background: #f9f9f9; padding: 60px 20px; border-radius: 20px;">
+        <h2 class="section-title">Progresso em Números</h2>
         <div class="stats">
             <div class="stat-box">
+                <div class="stat-icon">🍓</div>
                 <div class="stat-number">234</div>
-                <div class="stat-label">Garrafas Vendidas</div>
+                <div class="stat-label">Garrafas de Açaí Vendidas</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">1.170 km</div>
-                <div class="stat-label">Percorridos até Dublin</div>
+                <div class="stat-icon">🌍</div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Cidades Visitadas</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">R$ 3.500</div>
-                <div class="stat-label">Arrecadados</div>
+                <div class="stat-icon">📱</div>
+                <div class="stat-number">2.4K</div>
+                <div class="stat-label">Seguidores TikTok</div>
             </div>
             <div class="stat-box">
+                <div class="stat-icon">❤️</div>
                 <div class="stat-number">87</div>
                 <div class="stat-label">Apoiadores</div>
             </div>
+            <div class="stat-box">
+                <div class="stat-icon">📚</div>
+                <div class="stat-number">45</div>
+                <div class="stat-label">Dias Estudando Inglês</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-number">180</div>
+                <div class="stat-label">Dias até Dublin</div>
+            </div>
         </div>
     </section>
 
-    <!-- Mural dos Apoiadores -->
-    <section class="container" style="background: #f9f9f9; padding: 60px 20px;">
-        <h2 class="section-title">Mural dos Apoiadores</h2>
-        <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">Essas pessoas estão fazendo parte da minha história ❤️</p>
-        <div class="supporters-grid">
-            <div class="supporter-card">
-                <div class="supporter-name">Maria Silva</div>
-                <div class="supporter-date">15/01/2026</div>
+    <!-- Timeline -->
+    <section class="container">
+        <h2 class="section-title">A Jornada</h2>
+        <p class="section-subtitle">Do Brasil até a residência permanente na Irlanda</p>
+
+        <div class="timeline">
+            <div class="timeline-item completed">
+                <div class="timeline-content">
+                    <h3>📍 Janeiro 2026 - Início</h3>
+                    <p>Comecei a trabalhar viajando, vender açaí e estudar inglês. Criei este site e o TikTok para documentar tudo.</p>
+                    <span class="timeline-status completed">✓ Concluído</span>
+                </div>
             </div>
-            <div class="supporter-card">
-                <div class="supporter-name">João Pedro</div>
-                <div class="supporter-date">14/01/2026</div>
+
+            <div class="timeline-item in-progress">
+                <div class="timeline-content">
+                    <h3>🎯 Abril 2026 - Meta R$ 10.000</h3>
+                    <p>Arrecadar valor total necessário através de trabalho, açaí, freelas e TikTok.</p>
+                    <span class="timeline-status in-progress">⏳ Em Andamento (35%)</span>
+                </div>
             </div>
-            <div class="supporter-card">
-                <div class="supporter-name">Ana Costa</div>
-                <div class="supporter-date">13/01/2026</div>
+
+            <div class="timeline-item pending">
+                <div class="timeline-content">
+                    <h3>📚 Junho 2026 - Inscrição</h3>
+                    <p>Inscrição em curso de inglês em Dublin e solicitação de visto de estudante.</p>
+                    <span class="timeline-status pending">⏰ Pendente</span>
+                </div>
             </div>
-            <div class="supporter-card">
-                <div class="supporter-name">Carlos Mendes</div>
-                <div class="supporter-date">12/01/2026</div>
+
+            <div class="timeline-item pending">
+                <div class="timeline-content">
+                    <h3>✈️ Setembro 2026 - Embarque</h3>
+                    <p>Viagem para Dublin! Início oficial da nova vida na Irlanda.</p>
+                    <span class="timeline-status pending">⏰ Pendente</span>
+                </div>
             </div>
-            <!-- Adicione mais apoiadores conforme necessário -->
+
+            <div class="timeline-item pending">
+                <div class="timeline-content">
+                    <h3>🏫 Outubro 2026 - Estudos</h3>
+                    <p>Início do curso de inglês em Dublin. Trabalho part-time permitido pelo visto.</p>
+                    <span class="timeline-status pending">⏰ Pendente</span>
+                </div>
+            </div>
+
+            <div class="timeline-item pending">
+                <div class="timeline-content">
+                    <h3>🏡 2027 - Residência Permanente</h3>
+                    <p>Após conclusão dos estudos, início do processo de residência permanente na Irlanda.</p>
+                    <span class="timeline-status pending">⏰ Pendente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Integration -->
+    <section class="container">
+        <div class="social-section">
+            <h2 class="section-title">Acompanhe a Jornada</h2>
+            <p class="section-subtitle">Siga nas redes sociais para ver bastidores, viagens e atualizações diárias</p>
+
+            <div class="social-links">
+                <a href="https://tiktok.com/@seuusuario" class="social-link" target="_blank">
+                    <span class="social-icon">📱</span>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://instagram.com/seuusuario" class="social-link" target="_blank">
+                    <span class="social-icon">📸</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="mailto:contato@exemplo.com" class="social-link">
+                    <span class="social-icon">✉️</span>
+                    <span>Email</span>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Blog/Atualizações -->
-    <section class="container">
+    <section class="container" id="apoiar">
         <h2 class="section-title">Atualizações da Jornada</h2>
+        <p class="section-subtitle">Últimas novidades, conquistas e desafios</p>
 
         <div class="blog-post">
-            <h3>Primeira semana: 47 garrafas vendidas! 🎉</h3>
-            <div class="blog-date">20 de Janeiro, 2026</div>
-            <p>Não acredito que já vendemos 47 garrafas na primeira semana! Isso representa 235 km mais perto de Dublin. Obrigado a cada um de vocês que acreditou nessa ideia maluca. Essa semana aprendi a frase "I'd like an açaí bowl, please" em inglês 😄</p>
+            <h3>Primeira semana vendendo açaí: 47 garrafas! 🎉</h3>
+            <div class="blog-meta">
+                <span>📅 20 de Janeiro, 2026</span>
+                <span>👤 Weslley</span>
+            </div>
+            <span class="blog-tag">Açaí Dublin</span>
+            <span class="blog-tag">Conquista</span>
+            <p>Não acredito que já vendemos 47 garrafas na primeira semana! Cada uma representa R$ 15 mais perto de Dublin. Obrigado a todos que acreditaram nessa ideia. Essa semana também aprendi a frase "I'd like an açaí bowl, please" no meu curso de inglês 😄</p>
+        </div>
+
+        <div class="blog-post">
+            <h3>Viajando a trabalho: Curitiba dessa vez 🚗</h3>
+            <div class="blog-meta">
+                <span>📅 18 de Janeiro, 2026</span>
+                <span>👤 Weslley</span>
+            </div>
+            <span class="blog-tag">Viagens</span>
+            <span class="blog-tag">Trabalho</span>
+            <p>Essa semana estou em Curitiba a trabalho. Acordar em uma cidade diferente toda semana é desafiador, mas me lembra por que estou fazendo tudo isso. Cada viagem me aproxima da meta financeira. Gravei 3 vídeos pro TikTok mostrando a rotina aqui!</p>
         </div>
 
         <div class="blog-post">
             <h3>Por que Dublin? 🇮🇪</h3>
-            <div class="blog-date">15 de Janeiro, 2026</div>
+            <div class="blog-meta">
+                <span>📅 15 de Janeiro, 2026</span>
+                <span>👤 Weslley</span>
+            </div>
+            <span class="blog-tag">Imigração</span>
+            <span class="blog-tag">Dublin</span>
             <p>Muita gente me pergunta: por que a Irlanda? Simples: é um dos países mais acolhedores da Europa, tem um processo de imigração mais acessível para estudantes, e Dublin é uma cidade vibrante, multicultural e cheia de oportunidades. Além disso, falam inglês — e eu preciso muito melhorar o meu!</p>
         </div>
 
         <div class="blog-post">
-            <h3>O começo de tudo 🚀</h3>
-            <div class="blog-date">10 de Janeiro, 2026</div>
-            <p>Hoje oficialmente lancei o "Açaí Dublin". A ideia é simples: vender açaí pra juntar dinheiro e realizar meu sonho de estudar na Irlanda. Mas não quero fazer isso sozinho — quero que vocês façam parte dessa história. Cada garrafa vendida me aproxima do objetivo. Vamos juntos?</p>
+            <h3>Lancei este site e o projeto Açaí Dublin! 🚀</h3>
+            <div class="blog-meta">
+                <span>📅 10 de Janeiro, 2026</span>
+                <span>👤 Weslley</span>
+            </div>
+            <span class="blog-tag">Início</span>
+            <span class="blog-tag">Projeto</span>
+            <p>Hoje oficialmente lancei este site e o projeto "Açaí Dublin". A ideia é simples: documentar toda minha jornada de imigração com transparência total. Vou mostrar quanto ganho, quanto gasto, quanto falta. Quero que vocês façam parte dessa história. Vamos juntos rumo a Dublin?</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p><strong>Açaí Dublin</strong> - Do Brasil pra Irlanda 🇧🇷 ➜ 🇮🇪</p>
-        <p>Entre em contato: <a href="mailto:carvalhoerick.ec@gmail.com" style="color: #FFD700;">carvalhoerick.ec@gmail.com</a></p>
-        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Erick Carvalho - Todos os direitos reservados</p>
+        <h3 style="margin-bottom: 15px;">🇧🇷 ➜ 🇮🇪 Weslley Rumo a Dublin</h3>
+        <p>Documentando minha jornada de imigração com transparência total</p>
+        <p style="margin-top: 20px;">Entre em contato: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a></p>
+        <p style="margin-top: 30px; opacity: 0.7;">© 2026 Weslley - Todos os direitos reservados</p>
     </footer>
 
 </body>
 </html>
-
