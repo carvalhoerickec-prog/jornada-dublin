@@ -738,6 +738,50 @@
         </div>
     </section>
 
+<!-- Mural de Apoiadores -->
+<section class="container" id="mural-apoiadores">
+    <h2 class="section-title">Mural de Apoiadores</h2>
+    <p class="section-subtitle">
+        Esse espaço é pra agradecer quem acredita nessa jornada. Cada nome aqui representa um passo rumo a Dublin. 💚
+    </p>
+
+    <div class="financial-dashboard" style="margin-top: 20px;">
+        <h3 style="margin-bottom: 20px; color: #169B62;">Apoiadores Registrados</h3>
+
+        <div id="lista-apoiadores" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+
+            <!-- APOIADOR 1 -->
+            <div class="apoiador-card" style="background:#f8f9fa; padding:15px 20px; border-radius:10px; border-left:4px solid #169B62;">
+                <strong>Maria Silva</strong><br>
+                <span style="font-size:0.9em; color:#666;">"Boa sorte na sua jornada! Torcendo por você."</span><br>
+                <span style="font-size:0.85em; color:#999;">Apoio via PIX - R$ 50,00</span>
+            </div>
+
+            <!-- APOIADOR 2 -->
+            <div class="apoiador-card" style="background:#f8f9fa; padding:15px 20px; border-radius:10px; border-left:4px solid #169B62;">
+                <strong>João Santos</strong><br>
+                <span style="font-size:0.9em; color:#666;">"Vai com tudo, Erick! Dublin te espera."</span><br>
+                <span style="font-size:0.85em; color:#999;">Apoio via PIX - R$ 100,00</span>
+            </div>
+
+            <!-- APOIADOR 3 -->
+            <div class="apoiador-card" style="background:#f8f9fa; padding:15px 20px; border-radius:10px; border-left:4px solid #169B62;">
+                <strong>Apoiador Anônimo</strong><br>
+                <span style="font-size:0.9em; color:#666;">"Não desiste. Um passo de cada vez."</span><br>
+                <span style="font-size:0.85em; color:#999;">Apoio via PIX</span>
+            </div>
+
+            <!-- QUANDO TIVER MAIS APOIADORES, COPIE E COLE ESSE BLOCO ABAIXO -->
+
+        </div>
+
+        <p style="font-size:0.9em; color:#555; margin-top:25px;">
+            Quer ver seu nome aqui também? Você pode apoiar pela chave PIX em <strong>"Como Você Pode Apoiar"</strong> ou falar comigo direto no WhatsApp. 💬
+        </p>
+    </div>
+</section>
+
+
     <!-- Timeline -->
     <section class="container">
         <h2 class="section-title">A Jornada</h2>
@@ -1019,12 +1063,33 @@
         }
     }
 
-    // ===== EXECUTAR =====
-    document.addEventListener('DOMContentLoaded', atualizarTudo);
+  // ===== CONTAR APOIADORES AUTOMATICAMENTE =====
+function contarApoiadores() {
+    const apoiadores = document.querySelectorAll('.apoiador-card');
+    return apoiadores.length;
+}
 
-    // Atualizar a cada 1 hora
-    setInterval(atualizarTudo, 3600000);
-    </script>
+// ===== ATUALIZAR NÚMERO DE APOIADORES NOS STATS =====
+function atualizarNumeroApoiadores() {
+    const totalApoiadores = contarApoiadores();
+    const elemApoiadores = document.querySelectorAll('.stat-number')[2]; // 3º stat-box (Apoiadores)
+
+    if (elemApoiadores) {
+        elemApoiadores.textContent = totalApoiadores;
+    }
+}
+
+// ===== EXECUTAR TUDO =====
+function inicializar() {
+    atualizarTudo();
+    atualizarNumeroApoiadores();
+}
+
+document.addEventListener('DOMContentLoaded', inicializar);
+
+// Atualizar a cada 1 hora
+setInterval(inicializar, 3600000);
+</script>
 
 </body>
 </html>
