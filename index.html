@@ -1095,7 +1095,7 @@ function contarApoiadores() {
 // ===== ATUALIZAR NÚMERO DE APOIADORES NOS STATS =====
 function atualizarNumeroApoiadores() {
     const totalApoiadores = contarApoiadores();
-    const elemApoiadores = document.querySelectorAll('.stat-number')[2]; // 3º stat-box (Apoiadores)
+    const elemApoiadores = document.querySelectorAll('.stat-number')[1]; // 3º stat-box (Apoiadores)
 
     if (elemApoiadores) {
         elemApoiadores.textContent = totalApoiadores;
